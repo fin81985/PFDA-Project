@@ -73,7 +73,7 @@ combined_df[cols] = combined_df.groupby('station')[cols].transform(lambda x: x.b
 
 
 ## How to Run
-Open `wind_analysis.ipynb` in Jupyter Notebook or JupyterLab and run all cells from top to bottom. All required libraries are listed in `requirements.txt`.
+Open [`wind_analysis.ipynb`](https://github.com/fin81985/PFDA-Project/blob/main/wind_analysis.ipynb) in Jupyter Notebook or JupyterLab and run all cells from top to bottom. All required libraries are listed in [`requirements.txt`](https://github.com/fin81985/PFDA-Project/blob/main/requirements.txt).
 
 ## Notes
 The notebook is saved with all outputs already generated for ease of review.
