@@ -5,8 +5,11 @@
 ## Author: Finian Doonan
 
 ## Overview
+
 This repository contains a data analytics project examining historical wind speed data in Ireland and its implications for wind energy generation. The analysis focuses on wind speed variability, seasonal patterns, and long-term trends using publicly available meteorological data.
+
 **Stations included:**
+
 | Station              | Location       |
 | -------------------- | -------------- |
 | Malin Head           | Northern coast |
@@ -53,24 +56,21 @@ This repository contains a data analytics project examining historical wind spee
 
 ````python
 
-# Example: Convert mean wind speed to m/s
-combined_df['wind_speed_ms'] = pd.to_numeric(combined_df['wdsp'], errors='coerce') * 0.514444
+# Handle missing values per station
+
+cols = ['wind_speed_ms', 'hm_numeric', 'hg_numeric', 'ddhm_numeric']
+combined_df[cols] = combined_df.groupby('station')[cols].transform(lambda x: x.bfill().ffill())
 
 ````
 
 ## Technologies Used
 - Python 3
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- SciKit-Learn
+- Data manipulation with [pandas](https://pandas.pydata.org/)
+- Numerical computing with [NumPy](https://numpy.org/)
+- Visualization with [matplotlib](https://matplotlib.org/)
+- Statistical visualization with [Seaborn](https://seaborn.pydata.org/)
+- Statistical analysis with [SciPy](https://scipy.org/)
 
-## Repository Contents
-- `wind_analysis.ipynb` – Main analysis notebook
-- `data/raw/` – Original unmodified datasets
-- `data/processed/` – Cleaned and processed datasets
-- `figures/` – Generated plots
 
 ## How to Run
 Open `wind_analysis.ipynb` in Jupyter Notebook or JupyterLab and run all cells from top to bottom. All required libraries are listed in `requirements.txt`.
